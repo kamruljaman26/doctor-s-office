@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
  * Manages scheduling and cancellation of appointments.
  */
 public class AppointmentScheduler {
+
     /** List of available appointment slots */
     private List<LocalDateTime> appointmentSlots;
     /** List of scheduled appointments */
