@@ -6,12 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterController implements Initializable,DataTraveler {
+/**
+ * Controller for the registration page of the application.
+ * This controller handles user interactions on the registration view.
+ */
+public class RegisterController implements Initializable, DataTraveler {
 
     public TextField emailTxtFldId;
     public TextField passwordTxtFldId;
@@ -26,17 +29,19 @@ public class RegisterController implements Initializable,DataTraveler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Initialize any necessary components or data
     }
 
     @Override
     public void data(Object... o) {
-
+        // Implement data transfer functionality if needed
     }
 
-    // Move to home page
+    // Submit registration and move to home page
     public void submitButtonAction(ActionEvent actionEvent) {
+        // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        // Load the home page
         FXUtil.loadView(
                 actionEvent,
                 FXUtil.HOME_PAGE,

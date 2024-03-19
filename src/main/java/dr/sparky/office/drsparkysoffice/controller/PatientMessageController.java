@@ -17,6 +17,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
+/**
+ * Controller for the patient message page of the application.
+ * This controller handles user interactions on the patient message view.
+ */
 public class PatientMessageController implements Initializable, DataTraveler {
 
     public ImageView backImageViewId;
@@ -29,7 +33,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
 
         initTableView();
 
-        // init back button
+        // Initialize back button
         backImageViewId.setOnMouseClicked(e -> {
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(
@@ -39,7 +43,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
             );
         });
 
-        // view patient details
+        // View all patients
         viewAllPatientsTxtId.setOnMouseClicked(e->{
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(
@@ -51,7 +55,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
     }
 
     private void initTableView() {
-
+        // Initialize TableView with sample data
         data = FXCollections.observableArrayList();
         data.add(new Message("Carlos Ward", "Some message", "01/31/2024"));
         data.add(new Message("Johnny Kelly", "Another message", "01/28/2024"));
@@ -93,7 +97,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
 
     @Override
     public void data(Object... o) {
-
+        // Implement data transfer functionality if needed
     }
 
 }

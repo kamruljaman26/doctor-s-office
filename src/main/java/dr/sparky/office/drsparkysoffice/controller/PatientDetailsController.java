@@ -14,6 +14,10 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the patient details page of the application.
+ * This controller handles user interactions on the patient details view.
+ */
 public class PatientDetailsController implements Initializable, DataTraveler {
 
     public ImageView backImageViewId;
@@ -24,7 +28,9 @@ public class PatientDetailsController implements Initializable, DataTraveler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // init back button
+        // Initialize the patient details view and set up event handlers
+
+        // Initialize back button
         backImageViewId.setOnMouseClicked(e -> {
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(

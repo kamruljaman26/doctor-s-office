@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the login page of the application.
+ * This controller handles user interactions on the login view.
+ */
 public class LoginController implements Initializable, DataTraveler {
 
     public TextField userNameTxtFldID;
@@ -18,17 +22,19 @@ public class LoginController implements Initializable, DataTraveler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Initialize any necessary components or data
     }
 
     @Override
     public void data(Object... o) {
-
+        // Implement data transfer functionality if needed
     }
 
-    // Move to dashboard
+    // Method to handle sign in action
     public void signInButtonAction(ActionEvent actionEvent) {
+        // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        // Load the home page
         FXUtil.loadView(
                 actionEvent,
                 FXUtil.HOME_PAGE,

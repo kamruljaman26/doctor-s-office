@@ -8,36 +8,42 @@ import javafx.scene.Node;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StartController implements Initializable,DataTraveler {
+/**
+ * Controller for the initial screen of the application.
+ * This controller handles user interactions on the start view.
+ */
+public class StartController implements Initializable, DataTraveler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Initialize any necessary components or data
     }
 
     @Override
     public void data(Object... o) {
-
+        // Implement data transfer functionality if needed
     }
 
-    // Move to a patient section
+    // Move to the patient section
     public void patientButtonAction(ActionEvent actionEvent) {
         commonLogin(actionEvent);
     }
 
-    // Move to a nurse section
+    // Move to the nurse section
     public void nurseButtonAction(ActionEvent actionEvent) {
         commonLogin(actionEvent);
     }
 
-    // Move to a doctor section
+    // Move to the doctor section
     public void doctorButtonAction(ActionEvent actionEvent) {
         commonLogin(actionEvent);
     }
 
-    // Move to a sign-up section
+    // Move to the sign-up section
     public void signUpButtonAction(ActionEvent actionEvent) {
+        // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        // Load the registration page
         FXUtil.loadView(
                 actionEvent,
                 FXUtil.REGISTER_PAGE,
@@ -45,13 +51,15 @@ public class StartController implements Initializable,DataTraveler {
         );
     }
 
+    // Common method to navigate to the login page
     private void commonLogin(ActionEvent actionEvent){
+        // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        // Load the login page
         FXUtil.loadView(
                 actionEvent,
                 FXUtil.LOGIN_PAGE,
-                "Welcome back to system login."
+                "Welcome back to the system login."
         );
     }
-
 }
