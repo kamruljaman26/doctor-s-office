@@ -1,14 +1,13 @@
 package dr.sparky.office.drsparkysoffice.view;
 
+import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
@@ -51,6 +50,26 @@ public class SlideMenuView extends VBox {
         // close menu
         closeMenuBtn.setOnAction(event -> {
             close();
+        });
+
+        // move to patients message view
+        patientsMessageBtn.setOnAction(e -> {
+            ((Node) e.getSource()).getScene().getWindow().hide();
+            FXUtil.loadView(
+                    e,
+                    FXUtil.PATIENT_MESSAGE_PAGE,
+                    "Patients Messages"
+            );
+        });
+
+        // move to patient details view
+        patientsDetailsBtn.setOnAction(e->{
+            ((Node) e.getSource()).getScene().getWindow().hide();
+            FXUtil.loadView(
+                    e,
+                    FXUtil.PATIENT_DETAILS_PAGE,
+                    "View All Patients"
+            );
         });
     }
 
