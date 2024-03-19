@@ -6,15 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 public class FXUtil {
 
-    public static final String HOME_VIEW = "home-view.fxml";
+    public static final String START_VIEW = "start-view.fxml";
     public static final String LOGIN_PAGE = "login-view.fxml";
+    public static final String REGISTER_PAGE = "register-view.fxml";
+    public static final String HOME_PAGE = "home-view.fxml";
 
     // load fxml view in the stage, also we can send data between one view to another view
     public static void loadView( ActionEvent event, String fxSource, String title, Object... data) {

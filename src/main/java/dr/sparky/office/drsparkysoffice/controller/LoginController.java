@@ -21,15 +21,18 @@ public class LoginController implements Initializable, DataTraveler {
 
     }
 
-    // Move to dashboard
-    public void signInButtonAction(ActionEvent actionEvent) {
-
-    }
-
     @Override
     public void data(Object... o) {
 
     }
 
-
+    // Move to dashboard
+    public void signInButtonAction(ActionEvent actionEvent) {
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        FXUtil.loadView(
+                actionEvent,
+                FXUtil.HOME_PAGE,
+                "Doctor App"
+        );
+    }
 }

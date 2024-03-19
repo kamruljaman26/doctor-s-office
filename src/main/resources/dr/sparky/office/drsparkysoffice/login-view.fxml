@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="642.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.LoginController">
    <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="134.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@logo.png" />
+         <Image url="@images/logo.png" />
       </image>
    </ImageView>
    <Label layoutX="104.0" layoutY="102.0" text="Dr Sparky's Office" textFill="#616161">
@@ -30,7 +30,7 @@
          <Font name="Arial" size="12.0" />
       </font>
    </Label>
-   <Button layoutX="35.0" layoutY="360.0" mnemonicParsing="false" onAction="#signInButtonAction" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: red;" text="Sign In" textFill="WHITE" />
+   <Button layoutX="35.0" layoutY="360.0" mnemonicParsing="false" onAction="#signInButtonAction" prefHeight="40.0" prefWidth="254.0" style="-fx-background-color: red;" text="Sign In" textFill="WHITE" />
    <TextField fx:id="userNameTxtFldID" layoutX="35.0" layoutY="236.0" prefHeight="40.0" prefWidth="254.0" promptText="Enter Username" />
    <Label layoutX="37.0" layoutY="215.0" text="Username" textFill="RED">
       <font>

@@ -14,7 +14,7 @@ public class SparkyApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SparkyApp.class.getResource(FXUtil.HOME_VIEW));
+        FXMLLoader fxmlLoader = new FXMLLoader(SparkyApp.class.getResource(FXUtil.START_VIEW));
         Scene scene = new Scene(fxmlLoader.load(),330 , 640);
         stage.setTitle("Dr Sparky's Office");
         stage.setScene(scene);
