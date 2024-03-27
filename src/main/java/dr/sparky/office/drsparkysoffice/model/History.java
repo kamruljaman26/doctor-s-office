@@ -3,6 +3,7 @@ package dr.sparky.office.drsparkysoffice.model;
 import java.util.List;
 
 public class History {
+
     private List<Record> patientRecord;
 
     public List<Record> getPatientRecord() {

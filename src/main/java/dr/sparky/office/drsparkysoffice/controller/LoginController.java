@@ -3,6 +3,7 @@ package dr.sparky.office.drsparkysoffice.controller;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
  */
 public class LoginController implements Initializable, DataTraveler {
 
+    @FXML
     public TextField userNameTxtFldID;
     public PasswordField passwordTxtFldID;
 

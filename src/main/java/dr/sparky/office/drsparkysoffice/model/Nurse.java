@@ -1,6 +1,7 @@
 package dr.sparky.office.drsparkysoffice.model;
 
 public class Nurse {
+
     private String administerMedication;
     private String patientHealth;
 

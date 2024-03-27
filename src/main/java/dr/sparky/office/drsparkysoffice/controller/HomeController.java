@@ -5,7 +5,6 @@ import dr.sparky.office.drsparkysoffice.view.SlideMenuView;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

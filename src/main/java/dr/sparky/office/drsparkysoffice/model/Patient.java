@@ -1,6 +1,7 @@
 package dr.sparky.office.drsparkysoffice.model;
 
 public class Patient {
+
     private int patientID;
     private String name;
     private String contactInfo;

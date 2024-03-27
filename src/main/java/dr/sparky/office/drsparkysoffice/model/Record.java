@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import java.util.List;
 
 public class Record {
+
     private int scanID;
     private int patientID;
     private String scanData;
