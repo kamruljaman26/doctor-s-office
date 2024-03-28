@@ -5,6 +5,8 @@ import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,7 +42,7 @@ public class StartController implements Initializable, DataTraveler {
     }
 
     // Move to the sign-up section
-    public void signUpButtonAction(ActionEvent actionEvent) {
+    public void signUpButtonAction(MouseEvent actionEvent) {
         // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
         // Load the registration page
@@ -49,6 +51,8 @@ public class StartController implements Initializable, DataTraveler {
                 FXUtil.REGISTER_PAGE,
                 "Create Account"
         );
+
+        System.out.println("Create Account");
     }
 
     // Common method to navigate to the login page

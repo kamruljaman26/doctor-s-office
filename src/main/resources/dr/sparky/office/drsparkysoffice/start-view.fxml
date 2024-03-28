@@ -35,7 +35,7 @@
    </Button>
    <Button layoutX="34.0" layoutY="279.0" mnemonicParsing="false" onAction="#nurseButtonAction" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: red;" text="Nurse Login" textFill="WHITE" />
    <Button layoutX="35.0" layoutY="337.0" mnemonicParsing="false" onAction="#doctorButtonAction" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: red;" text="Doctor Login" textFill="WHITE" />
-   <Label layoutX="241.0" layoutY="580.0" onDragDetected="#signUpButtonAction" prefHeight="22.0" prefWidth="43.0" text="Sign Up" textFill="RED">
+   <Label layoutX="241.0" layoutY="580.0" onMouseClicked="#signUpButtonAction" prefHeight="22.0" prefWidth="43.0" text="Sign Up" textFill="RED">
       <font>
          <Font name="Arial Bold" size="11.0" />
       </font>
