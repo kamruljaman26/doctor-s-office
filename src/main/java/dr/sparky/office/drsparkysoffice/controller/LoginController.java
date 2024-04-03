@@ -35,7 +35,7 @@ public class LoginController implements Initializable, DataTraveler {
     // Method to handle sign in action
     public void signInButtonAction(ActionEvent actionEvent) {
 
-        // TODO: SING IN LOGIC
+
 
         // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();

@@ -3,6 +3,7 @@ package dr.sparky.office.drsparkysoffice.data;
 import dr.sparky.office.drsparkysoffice.model.UserAccount;
 import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.model.Patient;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class UserManager {
 
     private static final String USER_ACCOUNTS_FILE = "user_accounts.txt";
-    private Map<String, UserAccount> userAccounts;
+    private final Map<String, UserAccount> userAccounts;
 
     public UserManager() {
         this.userAccounts = new HashMap<>();
@@ -33,7 +34,7 @@ public class UserManager {
         Path path = Paths.get(USER_ACCOUNTS_FILE);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (UserAccount account : userAccounts.values()) {
-                String patientId = account.getPatient() != null ? account.getPatient().getPatientID(): ""; // Use -1 to signify no patient
+                String patientId = account.getPatient() != null ? account.getPatient().getPatientID() : ""; // Use -1 to signify no patient
                 String line = String.format("%s|%s|%s|%s%n",
                         account.getUsername(),
                         account.getPassword(), // Assuming the password is already encrypted
@@ -56,12 +57,16 @@ public class UserManager {
                 String username = parts[0];
                 String password = parts[1];
                 UserType type = UserType.valueOf(parts[2]);
-                String patientId = parts[3];
 
-                Patient patient = !patientId.equals("") ? retrievePatientById(patientId) : null; // You need to implement this method
-
-                UserAccount account = new UserAccount(username, password, type, patient);
-                userAccounts.put(username, account);
+                try {
+                    String patientId = parts[3];
+                    Patient patient = !patientId.equals("") ? retrievePatientById(patientId) : null; // You need to implement this method
+                    UserAccount account = new UserAccount(username, password, type, patient);
+                    userAccounts.put(username, account);
+                } catch (Exception e) {
+                    UserAccount account = new UserAccount(username, password, type);
+                    userAccounts.put(username, account);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,6 +89,7 @@ public class UserManager {
         if (userAccounts.containsKey(user.getUsername())) {
             return false; // User already exists
         }
+
         // Encrypt password before storing
         user.setPassword(encryptPassword(user.getPassword()));
         userAccounts.put(user.getUsername(), user);
@@ -173,6 +179,7 @@ public class UserManager {
         }
     }
 
+
     // Converts a byte array into a hex string
     private static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
@@ -184,5 +191,23 @@ public class UserManager {
             hexString.append(hex);
         }
         return hexString.toString();
+    }
+
+    public boolean updatePassword(UserAccount user, String newPassword) {
+        if (!userAccounts.containsKey(user.getUsername())) {
+            return false; // User not exists
+        }
+
+        // Encrypt password before storing
+        UserAccount u = userAccounts.get(user.getUsername());
+        u.setPassword(encryptPassword(newPassword));
+        userAccounts.put(user.getUsername(), u);
+
+        try {
+            saveUserAccounts();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 }

@@ -2,7 +2,6 @@ module dr.sparky.office.drsparkysoffice {
     requires javafx.controls;
     requires javafx.fxml;
 
-
     opens dr.sparky.office.drsparkysoffice to javafx.fxml;
     exports dr.sparky.office.drsparkysoffice;
     exports dr.sparky.office.drsparkysoffice.controller;
@@ -13,5 +12,6 @@ module dr.sparky.office.drsparkysoffice {
     opens dr.sparky.office.drsparkysoffice.util;
     opens dr.sparky.office.drsparkysoffice.images;
     opens dr.sparky.office.drsparkysoffice.data;
+    opens dr.sparky.office.drsparkysoffice.test;
 
 }

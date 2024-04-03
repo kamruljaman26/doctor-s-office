@@ -65,4 +65,14 @@ public class UserAccount {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
+    @Override
+    public String toString() {
+        return "UserAccount{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", type=" + type +
+                ", patient=" + patient +
+                '}';
+    }
 }
