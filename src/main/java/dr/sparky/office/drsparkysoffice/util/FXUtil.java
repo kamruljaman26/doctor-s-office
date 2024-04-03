@@ -16,7 +16,7 @@ public class FXUtil {
     public static final String START_VIEW = "start-view.fxml";
     public static final String LOGIN_PAGE = "login-view.fxml";
     public static final String REGISTER_PAGE = "register-view.fxml";
-    public static final String HOME_PAGE = "home-view.fxml";
+    public static final String PATIENT_DASH_PAGE = "patient-dash-view.fxml";
     public static final String PATIENT_MESSAGE_PAGE = "patient-message-view.fxml";
     public static final String PATIENT_DETAILS_PAGE = "patient-details-view.fxml";
 

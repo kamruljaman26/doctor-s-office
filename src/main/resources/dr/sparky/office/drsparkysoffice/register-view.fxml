@@ -32,7 +32,7 @@
          <Font name="Arial" size="12.0" />
       </font>
    </Label>
-   <ScrollPane layoutX="26.0" layoutY="214.0" prefHeight="400.0" prefWidth="266.0">
+   <ScrollPane layoutX="26.0" layoutY="214.0" prefHeight="377.0" prefWidth="266.0">
       <content>
          <VBox prefHeight="345.0" prefWidth="245.0">
             <children>
@@ -111,4 +111,5 @@
          </VBox>
       </content>
    </ScrollPane>
+   <Label fx:id="errMsgLabelId" alignment="CENTER" layoutX="17.0" layoutY="609.0" prefHeight="17.0" prefWidth="288.0" textAlignment="CENTER" textFill="#f27c7c" />
 </AnchorPane>

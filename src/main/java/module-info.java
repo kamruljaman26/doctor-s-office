@@ -12,6 +12,6 @@ module dr.sparky.office.drsparkysoffice {
     opens dr.sparky.office.drsparkysoffice.view;
     opens dr.sparky.office.drsparkysoffice.util;
     opens dr.sparky.office.drsparkysoffice.images;
-    opens dr.sparky.office.drsparkysoffice.manager;
+    opens dr.sparky.office.drsparkysoffice.data;
 
 }

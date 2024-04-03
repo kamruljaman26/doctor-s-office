@@ -1,6 +1,5 @@
 package dr.sparky.office.drsparkysoffice.controller;
 
-import dr.sparky.office.drsparkysoffice.model.Message;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.collections.FXCollections;
@@ -8,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -35,7 +33,7 @@ public class PatientDetailsController implements Initializable, DataTraveler {
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(
                     e,
-                    FXUtil.HOME_PAGE,
+                    FXUtil.PATIENT_DASH_PAGE,
                     "Doctor App"
             );
         });

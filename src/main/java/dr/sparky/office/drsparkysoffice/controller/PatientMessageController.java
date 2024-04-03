@@ -37,7 +37,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(
                     e,
-                    FXUtil.HOME_PAGE,
+                    FXUtil.PATIENT_DASH_PAGE,
                     "Doctor App"
             );
         });

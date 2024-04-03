@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  * Controller for the home page of the application.
  * This controller handles user interactions on the home view.
  */
-public class HomeController implements Initializable, DataTraveler {
+public class PatientDashController implements Initializable, DataTraveler {
 
     public ImageView menuImageViewId;
     public Pane rootPane;

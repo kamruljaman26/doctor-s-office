@@ -1,4 +1,4 @@
-package dr.sparky.office.drsparkysoffice.manager;
+package dr.sparky.office.drsparkysoffice.data;
 
 import dr.sparky.office.drsparkysoffice.model.Appointment;
 import dr.sparky.office.drsparkysoffice.model.Patient;
