@@ -67,6 +67,7 @@ public class RegisterController implements Initializable, DataTraveler {
 
             if (patientSaved && userSaved) {
                 // Proceed to load the home page
+                UserManager.setCurrentUser(userAccount);
                 FXUtil.loadView(actionEvent, FXUtil.PATIENT_DASH_PAGE, "Patient Dashboard");
             } else {
                 throw new Exception("There was an error saving the patient or user account.");

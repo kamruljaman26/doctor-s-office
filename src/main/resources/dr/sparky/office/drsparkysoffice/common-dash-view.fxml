@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="rootPane" prefHeight="642.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.NurseDashController">
+<Pane fx:id="rootPane" prefHeight="642.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.CommonDashController">
    <ImageView fitHeight="50.0" fitWidth="22.0" layoutX="48.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/logo.png" />

@@ -1,7 +1,10 @@
 package dr.sparky.office.drsparkysoffice.controller;
 
 import dr.sparky.office.drsparkysoffice.data.PatientManager;
+import dr.sparky.office.drsparkysoffice.data.UserManager;
 import dr.sparky.office.drsparkysoffice.model.Patient;
+import dr.sparky.office.drsparkysoffice.model.UserAccount;
+import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.collections.FXCollections;
@@ -38,8 +41,22 @@ public class PatientDetailsController implements Initializable, DataTraveler {
 
         // Initialize back button
         backImageViewId.setOnMouseClicked(e -> {
-            ((Node) e.getSource()).getScene().getWindow().hide();
-            FXUtil.loadView(e, FXUtil.PATIENT_DASH_PAGE, "Doctor App");
+            UserAccount currentUser = UserManager.getCurrentUser();
+            if (currentUser.getType().equals(UserType.PATIENT)) {
+                ((Node) e.getSource()).getScene().getWindow().hide();
+                FXUtil.loadView(
+                        e,
+                        FXUtil.PATIENT_DASH_PAGE,
+                        "Patient Dash"
+                );
+            } else {
+                ((Node) e.getSource()).getScene().getWindow().hide();
+                FXUtil.loadView(
+                        e,
+                        FXUtil.COMMON_DASH_PAGE,
+                        UserManager.getCurrentUser().getType() + " App"
+                );
+            }
         });
 
         // Initialize search button
