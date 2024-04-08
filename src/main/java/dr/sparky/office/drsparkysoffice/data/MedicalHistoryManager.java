@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class MedicalHistoryManager {
 
-    private static final String MEDICAL_HISTORY_FILE = "medical_history.bin";
+    private static final String MEDICAL_HISTORY_FILE = "database/medicalHistory.bin";
     private Map<Integer, List<MedicalHistory>> medicalHistories;
 
     public MedicalHistoryManager() {
