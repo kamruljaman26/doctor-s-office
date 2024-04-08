@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,8 +33,6 @@ public class LoginController implements Initializable, DataTraveler {
 
     // Method to handle sign in action
     public void signInButtonAction(ActionEvent actionEvent) {
-
-
 
         // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();

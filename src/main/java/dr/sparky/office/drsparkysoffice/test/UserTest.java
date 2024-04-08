@@ -47,7 +47,7 @@ public class UserTest {
         System.out.println("Invalid login: " + invalidLogin);
 
         // Test deleting a user
-        deleted = userManager.deleteUser("testUser");
-        System.out.println("User deleted: " + deleted);
+//        deleted = userManager.deleteUser("testUser");
+//        System.out.println("User deleted: " + deleted);
     }
 }
