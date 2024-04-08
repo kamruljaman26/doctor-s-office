@@ -1,6 +1,8 @@
 package dr.sparky.office.drsparkysoffice.model;
 
-public enum UserType {
+import java.io.Serializable;
+
+public enum UserType implements Serializable {
     PATIENT,
     NURSE,
     DOCTOR

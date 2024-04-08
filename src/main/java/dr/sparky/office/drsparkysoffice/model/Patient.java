@@ -1,8 +1,9 @@
 package dr.sparky.office.drsparkysoffice.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Patient {
+public class Patient implements Serializable {
 
     private String patientID;
     private String email;

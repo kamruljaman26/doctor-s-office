@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class SparkyApp extends Application {
 
-    private FXMLLoader fxmlLoader;
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SparkyApp.class.getResource(FXUtil.START_VIEW));

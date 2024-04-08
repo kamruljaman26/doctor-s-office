@@ -3,7 +3,6 @@ package dr.sparky.office.drsparkysoffice.data;
 import dr.sparky.office.drsparkysoffice.model.UserAccount;
 import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.model.Patient;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -211,5 +210,17 @@ public class UserManager {
             throw new RuntimeException(e);
         }
         return true;
+    }
+
+    public Map<String, UserAccount> getUserAccounts() {
+        return userAccounts;
+    }
+
+    public static UserAccount getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(UserAccount currentUser) {
+        UserManager.currentUser = currentUser;
     }
 }

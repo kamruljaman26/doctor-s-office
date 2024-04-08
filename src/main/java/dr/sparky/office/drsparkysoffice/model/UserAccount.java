@@ -1,6 +1,8 @@
 package dr.sparky.office.drsparkysoffice.model;
 
-public class UserAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
 
     private String email;
     private String password;

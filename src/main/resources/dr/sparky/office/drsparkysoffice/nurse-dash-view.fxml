@@ -27,5 +27,5 @@
          <Image url="@images/menu.png" />
       </image>
    </ImageView>
-   <Label layoutX="103.0" layoutY="201.0" text="Nurse " />
+   <Label layoutX="142.0" layoutY="239.0" text="Nurse " />
 </Pane>

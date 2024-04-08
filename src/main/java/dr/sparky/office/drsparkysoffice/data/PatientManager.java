@@ -123,12 +123,14 @@ public class PatientManager {
         }
     }
 
+    //
     private boolean savePatient(Patient patient) {
         Path path = Paths.get(DIRECTORY);
         try {
             if (!Files.exists(path)) {
                 Files.createDirectory(path);
             }
+
             List<String> lines = Arrays.asList(
                     "PatientID: " + patient.getPatientID(),
                     "Email: " + patient.getEmail(),

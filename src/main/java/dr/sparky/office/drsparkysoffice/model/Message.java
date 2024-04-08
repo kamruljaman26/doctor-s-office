@@ -1,10 +1,13 @@
 package dr.sparky.office.drsparkysoffice.model;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
 
     private String contact;
     private String lastMessage;
     private String date;
+    private boolean isRead;
 
     public Message(String contact, String lastMessage, String date) {
         this.contact = contact;
@@ -34,5 +37,15 @@ public class Message {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "contact='" + contact + '\'' +
+                ", lastMessage='" + lastMessage + '\'' +
+                ", date='" + date + '\'' +
+                ", isRead=" + isRead +
+                '}';
     }
 }
