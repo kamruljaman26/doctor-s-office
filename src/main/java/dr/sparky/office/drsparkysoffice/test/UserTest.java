@@ -20,7 +20,7 @@ public class UserTest {
 
         // Test validating login
         userManager.addUser(user); // Add the user again for login validation test
-        boolean validLogin = userManager.validateLogin("testUser", "testPassword");
+        UserAccount validLogin = userManager.validateLogin("testUser", "testPassword");
         System.out.println("Valid login: " + validLogin);
 
         // Test updating a user
@@ -43,7 +43,7 @@ public class UserTest {
         validLogin = userManager.validateLogin("testUser", "testPassword");
         System.out.println("Valid login: " + validLogin);
 
-        boolean invalidLogin = userManager.validateLogin("testUser", "wrongPassword");
+        UserAccount invalidLogin = userManager.validateLogin("testUser", "wrongPassword");
         System.out.println("Invalid login: " + invalidLogin);
 
         // Test deleting a user

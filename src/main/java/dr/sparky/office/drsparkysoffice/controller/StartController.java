@@ -1,5 +1,6 @@
 package dr.sparky.office.drsparkysoffice.controller;
 
+import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.event.ActionEvent;
@@ -28,17 +29,17 @@ public class StartController implements Initializable, DataTraveler {
 
     // Move to the patient section
     public void patientButtonAction(ActionEvent actionEvent) {
-        commonLogin(actionEvent);
+        commonLogin(actionEvent, UserType.PATIENT);
     }
 
     // Move to the nurse section
     public void nurseButtonAction(ActionEvent actionEvent) {
-        commonLogin(actionEvent);
+        commonLogin(actionEvent, UserType.NURSE);
     }
 
     // Move to the doctor section
     public void doctorButtonAction(ActionEvent actionEvent) {
-        commonLogin(actionEvent);
+        commonLogin(actionEvent, UserType.DOCTOR);
     }
 
     // Move to the sign-up section
@@ -56,14 +57,15 @@ public class StartController implements Initializable, DataTraveler {
     }
 
     // Common method to navigate to the login page
-    private void commonLogin(ActionEvent actionEvent){
+    private void commonLogin(ActionEvent actionEvent, UserType type) {
         // Hide the current window
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
         // Load the login page
         FXUtil.loadView(
                 actionEvent,
                 FXUtil.LOGIN_PAGE,
-                "Welcome back to the system login."
+                "Welcome back to the system login.",
+                type
         );
     }
 }

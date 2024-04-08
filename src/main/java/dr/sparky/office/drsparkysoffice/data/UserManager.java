@@ -22,6 +22,7 @@ public class UserManager {
 
     private static final String USER_ACCOUNTS_FILE = "user_accounts.txt";
     private final Map<String, UserAccount> userAccounts;
+    private static UserAccount currentUser;
 
     public UserManager() {
         this.userAccounts = new HashMap<>();
@@ -36,7 +37,7 @@ public class UserManager {
             for (UserAccount account : userAccounts.values()) {
                 String patientId = account.getPatient() != null ? account.getPatient().getPatientID() : ""; // Use -1 to signify no patient
                 String line = String.format("%s|%s|%s|%s%n",
-                        account.getUsername(),
+                        account.getEmail(),
                         account.getPassword(), // Assuming the password is already encrypted
                         account.getType(),
                         patientId);
@@ -86,13 +87,13 @@ public class UserManager {
      * @return True if the account was added successfully, false otherwise
      */
     public boolean addUser(UserAccount user) {
-        if (userAccounts.containsKey(user.getUsername())) {
+        if (userAccounts.containsKey(user.getEmail())) {
             return false; // User already exists
         }
 
         // Encrypt password before storing
         user.setPassword(encryptPassword(user.getPassword()));
-        userAccounts.put(user.getUsername(), user);
+        userAccounts.put(user.getEmail(), user);
 
         try {
             saveUserAccounts();
@@ -119,10 +120,10 @@ public class UserManager {
      * @return True if the account was updated successfully, false otherwise
      */
     public boolean updateUser(UserAccount user) {
-        if (!userAccounts.containsKey(user.getUsername())) {
+        if (!userAccounts.containsKey(user.getEmail())) {
             return false; // User does not exist
         }
-        userAccounts.put(user.getUsername(), user);
+        userAccounts.put(user.getEmail(), user);
 
         try {
             saveUserAccounts();
@@ -159,13 +160,14 @@ public class UserManager {
      * @param password The password to validate
      * @return True if the credentials are valid, false otherwise
      */
-    public boolean validateLogin(String username, String password) {
+    public UserAccount validateLogin(String username, String password) {
         UserAccount user = getUser(username);
-        if (user != null) {
-            String encryptedPassword = encryptPassword(password);
-            return encryptedPassword.equals(user.getPassword());
+        String encryptedPassword = encryptPassword(password);
+        if (user != null && encryptedPassword.equals(user.getPassword())) {
+            currentUser = user;
+            return user;
         }
-        return false;
+        return null;
     }
 
     // Encrypts the password using SHA-256
@@ -194,14 +196,14 @@ public class UserManager {
     }
 
     public boolean updatePassword(UserAccount user, String newPassword) {
-        if (!userAccounts.containsKey(user.getUsername())) {
+        if (!userAccounts.containsKey(user.getEmail())) {
             return false; // User not exists
         }
 
         // Encrypt password before storing
-        UserAccount u = userAccounts.get(user.getUsername());
+        UserAccount u = userAccounts.get(user.getEmail());
         u.setPassword(encryptPassword(newPassword));
-        userAccounts.put(user.getUsername(), u);
+        userAccounts.put(user.getEmail(), u);
 
         try {
             saveUserAccounts();

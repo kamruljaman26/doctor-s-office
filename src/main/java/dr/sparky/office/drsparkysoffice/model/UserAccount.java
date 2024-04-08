@@ -2,21 +2,21 @@ package dr.sparky.office.drsparkysoffice.model;
 
 public class UserAccount {
 
-    private String username;
+    private String email;
     private String password;
     private UserType type;
     private Patient patient;
 
     // Constructor for doctor and nurse
-    public UserAccount(String username, String password, UserType type) {
-        this.username = username;
+    public UserAccount(String email, String password, UserType type) {
+        this.email = email;
         this.password = password;
         this.type = type;
     }
 
     // Constructor for patient
-    public UserAccount(String username, String password, UserType type, Patient patient) {
-        this.username = username;
+    public UserAccount(String email, String password, UserType type, Patient patient) {
+        this.email = email;
         this.password = password;
         this.type = type;
         this.patient = patient;
@@ -34,12 +34,12 @@ public class UserAccount {
         return  type.equals(UserType.DOCTOR);
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -69,7 +69,7 @@ public class UserAccount {
     @Override
     public String toString() {
         return "UserAccount{" +
-                "username='" + username + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", type=" + type +
                 ", patient=" + patient +

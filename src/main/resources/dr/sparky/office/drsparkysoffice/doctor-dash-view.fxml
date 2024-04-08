@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="rootPane" prefHeight="642.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.DoctorDashController">
+   <ImageView fitHeight="50.0" fitWidth="22.0" layoutX="48.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/logo.png" />
+      </image>
+   </ImageView>
+   <Label layoutX="77.0" layoutY="23.0" text="Dr Sparky's Office" textFill="#616161">
+      <font>
+         <Font name="Arial Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label layoutX="37.0" layoutY="67.0" text="Welcome, Jhon">
+      <font>
+         <Font name="Arial Bold" size="22.0" />
+      </font>
+   </Label>
+   <ImageView fx:id="menuImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/menu.png" />
+      </image>
+   </ImageView>
+   <Label layoutX="145.0" layoutY="275.0" text="Doctor" />
+</Pane>

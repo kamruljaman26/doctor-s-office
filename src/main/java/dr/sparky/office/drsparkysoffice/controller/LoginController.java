@@ -1,13 +1,18 @@
 package dr.sparky.office.drsparkysoffice.controller;
 
+import dr.sparky.office.drsparkysoffice.data.UserManager;
+import dr.sparky.office.drsparkysoffice.model.UserAccount;
+import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,29 +22,73 @@ import java.util.ResourceBundle;
  */
 public class LoginController implements Initializable, DataTraveler {
 
-    @FXML
     public TextField userNameTxtFldID;
     public PasswordField passwordTxtFldID;
+    public Label errLblId;
+
+    private UserManager userManager;
+    private UserType type;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Initialize any necessary components or data
+        userManager = new UserManager();
     }
 
     @Override
     public void data(Object... o) {
-        // Implement data transfer functionality if needed
+        type = (UserType) o[0];
     }
 
     // Method to handle sign in action
     public void signInButtonAction(ActionEvent actionEvent) {
 
-        // Hide the current window
-        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
-        // Load the home page
+        String username = userNameTxtFldID.getText();
+        String password = passwordTxtFldID.getText();
+        UserAccount userAccount = userManager.validateLogin(username, password); // validate login
+
+        if (userAccount == null) {
+            errLblId.setText("Invalid username or password!");
+        } else if (!userAccount.getType().equals(type)) {
+            errLblId.setText("Invalid login type selection!");
+        } else {
+            if (type.equals(UserType.PATIENT)) {
+                // Hide the current window
+                ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+                // Load the home page
+                FXUtil.loadView(
+                        actionEvent,
+                        FXUtil.PATIENT_DASH_PAGE,
+                        "Patient Dashboard",
+                        userAccount
+                );
+            } else if (type.equals(UserType.DOCTOR)) {
+                // Hide the current window
+                ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+                // Load the home page
+                FXUtil.loadView(
+                        actionEvent,
+                        FXUtil.DOCTOR_DASH_PAGE,
+                        "Doctor Dashboard",
+                        userAccount
+                );
+            } else if (type.equals(UserType.NURSE)) {
+                // Hide the current window
+                ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+                // Load the home page
+                FXUtil.loadView(
+                        actionEvent,
+                        FXUtil.NURSE_DASH_PAGE,
+                        "Nurse Dashboard",
+                        userAccount
+                );
+            }
+        }
+    }
+
+    public void backButtonAction(ActionEvent actionEvent) {
         FXUtil.loadView(
                 actionEvent,
-                FXUtil.PATIENT_DASH_PAGE,
+                FXUtil.START_VIEW,
                 "Doctor App"
         );
     }
