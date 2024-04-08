@@ -1,5 +1,6 @@
 package dr.sparky.office.drsparkysoffice.view;
 
+import dr.sparky.office.drsparkysoffice.data.UserManager;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
@@ -18,6 +19,7 @@ public class SlideMenuView extends VBox {
     private Button patientsMessageBtn;
     private Button patientsDetailsBtn;
     private Button closeMenuBtn;
+    private Button logoutBtn;
 
     public SlideMenuView(Pane pane) {
         configureButtons();
@@ -30,22 +32,26 @@ public class SlideMenuView extends VBox {
         title.setFont(font("System", FontWeight.BOLD, 24));
         title.setTextFill(Color.WHITE);
 
-        patientsMessageBtn = new Button("Patients Messages");
-        patientsDetailsBtn = new Button("Patients Details");
-        closeMenuBtn = new Button("Close Menu");
+        patientsMessageBtn = new Button("Patient's Messages");
+        patientsDetailsBtn = new Button("Patient's Details");
+        logoutBtn = new Button("Logout");
+        closeMenuBtn = new Button("Close");
 
         // Style each button
         String buttonStyle = "-fx-border-color: white; -fx-border-width: 1; -fx-text-fill: white; -fx-background-color: transparent;";
         patientsMessageBtn.setStyle(buttonStyle);
         patientsDetailsBtn.setStyle(buttonStyle);
         closeMenuBtn.setStyle(buttonStyle);
+        logoutBtn.setStyle(buttonStyle);
+
 
         // Make each button expand to the maximum available width
         patientsMessageBtn.setMaxWidth(Double.MAX_VALUE);
         patientsDetailsBtn.setMaxWidth(Double.MAX_VALUE);
         closeMenuBtn.setMaxWidth(Double.MAX_VALUE);
+        logoutBtn.setMaxWidth(Double.MAX_VALUE);
 
-        getChildren().addAll(title, patientsMessageBtn, patientsDetailsBtn, closeMenuBtn);
+        getChildren().addAll(title, patientsMessageBtn, patientsDetailsBtn,logoutBtn, closeMenuBtn);
 
         // close menu
         closeMenuBtn.setOnAction(event -> {
@@ -70,6 +76,17 @@ public class SlideMenuView extends VBox {
                     FXUtil.PATIENT_DETAILS_PAGE,
                     "View All Patients"
             );
+        });
+
+        // move to patients message view
+        logoutBtn.setOnAction(e -> {
+            ((Node) e.getSource()).getScene().getWindow().hide();
+            FXUtil.loadView(
+                    e,
+                    FXUtil.START_VIEW,
+                    "Dr Sparky's Office"
+            );
+            UserManager.logout();
         });
     }
 

@@ -220,7 +220,7 @@ public class UserManager {
         return currentUser;
     }
 
-    public static void setCurrentUser(UserAccount currentUser) {
-        UserManager.currentUser = currentUser;
+    public static void logout() {
+        UserManager.currentUser = null;
     }
 }

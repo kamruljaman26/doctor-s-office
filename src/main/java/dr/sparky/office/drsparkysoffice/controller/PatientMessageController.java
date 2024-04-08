@@ -56,18 +56,18 @@ public class PatientMessageController implements Initializable, DataTraveler {
     private void initTableView() {
         // Initialize TableView with sample data
         data = FXCollections.observableArrayList();
-        data.add(new Message("Carlos Ward", "Some message", "01/31/2024"));
-        data.add(new Message("Johnny Kelly", "Another message", "01/28/2024"));
-        data.add(new Message("Martha Long", "Placeholder message", "01/03/2024"));
-        data.add(new Message("Rachel Willis", "Placeholder message", "01/01/2024"));
-        data.add(new Message("Alex Smith", "Placeholder message", "12/31/2023"));
-        data.add(new Message("Jamie Lane", "Placeholder message", "12/25/2023"));
-        data.add(new Message("Casey Jordan", "Placeholder message", "12/20/2023"));
-        data.add(new Message("Pat Taylor", "Placeholder message", "12/15/2023"));
-        data.add(new Message("Drew Morgan", "Placeholder message", "12/10/2023"));
-        data.add(new Message("Sam Lee", "Placeholder message", "12/05/2023"));
-        data.add(new Message("Chris Doe", "Placeholder message", "11/30/2023"));
-        data.add(new Message("Taylor Bailey", "Placeholder message", "11/25/2023"));
+//        data.add(new Message("Carlos Ward", "Some message", "01/31/2024"));
+//        data.add(new Message("Johnny Kelly", "Another message", "01/28/2024"));
+//        data.add(new Message("Martha Long", "Placeholder message", "01/03/2024"));
+//        data.add(new Message("Rachel Willis", "Placeholder message", "01/01/2024"));
+//        data.add(new Message("Alex Smith", "Placeholder message", "12/31/2023"));
+//        data.add(new Message("Jamie Lane", "Placeholder message", "12/25/2023"));
+//        data.add(new Message("Casey Jordan", "Placeholder message", "12/20/2023"));
+//        data.add(new Message("Pat Taylor", "Placeholder message", "12/15/2023"));
+//        data.add(new Message("Drew Morgan", "Placeholder message", "12/10/2023"));
+//        data.add(new Message("Sam Lee", "Placeholder message", "12/05/2023"));
+//        data.add(new Message("Chris Doe", "Placeholder message", "11/30/2023"));
+//        data.add(new Message("Taylor Bailey", "Placeholder message", "11/25/2023"));
 
         // Define columns
         TableColumn<Message, String> contactColumn = new TableColumn<>("Contact");
