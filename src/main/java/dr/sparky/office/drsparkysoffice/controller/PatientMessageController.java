@@ -48,7 +48,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
             FXUtil.loadView(
                     e,
                     FXUtil.PATIENT_DETAILS_PAGE,
-                    "View All Patients"
+                    "All Patients"
             );
         });
     }

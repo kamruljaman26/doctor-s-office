@@ -1,6 +1,7 @@
 package dr.sparky.office.drsparkysoffice.view;
 
 import dr.sparky.office.drsparkysoffice.data.UserManager;
+import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
@@ -32,8 +33,8 @@ public class SlideMenuView extends VBox {
         title.setFont(font("System", FontWeight.BOLD, 24));
         title.setTextFill(Color.WHITE);
 
-        patientsMessageBtn = new Button("Patient's Messages");
-        patientsDetailsBtn = new Button("Patient's Details");
+        patientsMessageBtn = new Button("Messages");
+        patientsDetailsBtn = new Button("Details");
         logoutBtn = new Button("Logout");
         closeMenuBtn = new Button("Close");
 
@@ -44,14 +45,19 @@ public class SlideMenuView extends VBox {
         closeMenuBtn.setStyle(buttonStyle);
         logoutBtn.setStyle(buttonStyle);
 
-
         // Make each button expand to the maximum available width
         patientsMessageBtn.setMaxWidth(Double.MAX_VALUE);
         patientsDetailsBtn.setMaxWidth(Double.MAX_VALUE);
         closeMenuBtn.setMaxWidth(Double.MAX_VALUE);
         logoutBtn.setMaxWidth(Double.MAX_VALUE);
 
-        getChildren().addAll(title, patientsMessageBtn, patientsDetailsBtn,logoutBtn, closeMenuBtn);
+
+        // Customized Menu for Patient and Doctor:Nurse
+        if (UserManager.getCurrentUser() != null && UserManager.getCurrentUser().getType().equals(UserType.PATIENT)) {
+            getChildren().addAll(title, patientsMessageBtn, logoutBtn, closeMenuBtn);
+        } else {
+            getChildren().addAll(title, patientsMessageBtn, patientsDetailsBtn, logoutBtn, closeMenuBtn);
+        }
 
         // close menu
         closeMenuBtn.setOnAction(event -> {
@@ -69,7 +75,7 @@ public class SlideMenuView extends VBox {
         });
 
         // move to patient details view
-        patientsDetailsBtn.setOnAction(e->{
+        patientsDetailsBtn.setOnAction(e -> {
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(
                     e,

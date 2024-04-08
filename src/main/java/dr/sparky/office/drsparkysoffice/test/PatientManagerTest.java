@@ -28,8 +28,8 @@ public class PatientManagerTest {
         }
 
         // Test deleting a patient
-        boolean deleted = patientManager.deletePatient("ID001");
-        System.out.println("Patient deleted: " + deleted);
+//        boolean deleted = patientManager.deletePatient("ID001");
+//        System.out.println("Patient deleted: " + deleted);
 
         // Test getting all patients
         List<Patient> allPatients = patientManager.getAllPatients();

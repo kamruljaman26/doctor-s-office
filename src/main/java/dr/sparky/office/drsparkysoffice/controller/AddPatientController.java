@@ -2,7 +2,9 @@ package dr.sparky.office.drsparkysoffice.controller;
 
 import dr.sparky.office.drsparkysoffice.data.PatientManager;
 import dr.sparky.office.drsparkysoffice.data.UserManager;
-import dr.sparky.office.drsparkysoffice.model.*;
+import dr.sparky.office.drsparkysoffice.model.Patient;
+import dr.sparky.office.drsparkysoffice.model.UserAccount;
+import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.event.ActionEvent;
@@ -20,7 +22,7 @@ import java.util.regex.Pattern;
  * Controller for the registration page of the application.
  * This controller handles user interactions on the registration view.
  */
-public class RegisterController implements Initializable, DataTraveler {
+public class AddPatientController implements Initializable, DataTraveler {
 
     public TextField emailTxtFldId;
     public TextField passwordTxtFldId;
@@ -33,6 +35,7 @@ public class RegisterController implements Initializable, DataTraveler {
     public TextField emConLNameTxtFldID;
     public TextField emConPhoneTxtFldID;
     public Label errMsgLabelId;
+    public ImageView imgBackBtn;
 
     private PatientManager patientManager;
     private UserManager userManager;
@@ -41,6 +44,10 @@ public class RegisterController implements Initializable, DataTraveler {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         patientManager = new PatientManager();
         userManager = new UserManager();
+        // set back button
+        imgBackBtn.setOnMouseClicked(e -> {
+            FXUtil.loadView(e, FXUtil.PATIENT_DETAILS_PAGE, "Patient Details");
+        });
     }
 
     @Override
@@ -51,6 +58,7 @@ public class RegisterController implements Initializable, DataTraveler {
     // Submit registration and move to the home page
     public void submitButtonAction(ActionEvent actionEvent) {
         errMsgLabelId.setText(""); // Clear any previous error messages
+
 
         // Validate input fields and email uniqueness
         if (!validateFields() || !isEmailUnique(emailTxtFldId.getText())) {
@@ -67,13 +75,14 @@ public class RegisterController implements Initializable, DataTraveler {
 
             if (patientSaved && userSaved) {
                 // Proceed to load the home page
-                FXUtil.loadView(actionEvent, FXUtil.PATIENT_DASH_PAGE, "Patient Dashboard");
+                FXUtil.loadView(actionEvent, FXUtil.PATIENT_DETAILS_PAGE, "Patient Details");
             } else {
                 throw new Exception("There was an error saving the patient or user account.");
             }
         } catch (Exception e) {
             errMsgLabelId.setText(e.getMessage());
         }
+
     }
 
     private boolean validateFields() {
@@ -138,7 +147,7 @@ public class RegisterController implements Initializable, DataTraveler {
         // If not, create a new Patient object and set these fields using setters
         return new Patient(
                 // Use appropriate values, including conversion or parsing as needed
-                generatePatientID(), email,firstName, lastName, dateOfBirth, phoneNumber, insuranceProvider,
+                generatePatientID(), email, firstName, lastName, dateOfBirth, phoneNumber, insuranceProvider,
                 emergencyContactFirstName, emergencyContactLastName, emergencyContactPhoneNumber
         );
     }
