@@ -212,18 +212,33 @@ public class UserManager {
         return true;
     }
 
+    /**
+     * Retrieves the map of user accounts.
+     * @return The map of user accounts
+     */
     public Map<String, UserAccount> getUserAccounts() {
         return userAccounts;
     }
 
+    /**
+     * Retrieves the currently logged-in user.
+     * @return The currently logged-in user
+     */
     public static UserAccount getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * Sets the currently logged-in user.
+     * @param currentUser The user account to set as the current user
+     */
     public static void setCurrentUser(UserAccount currentUser) {
         UserManager.currentUser = currentUser;
     }
 
+    /**
+     * Logs out the current user by setting the currentUser to null.
+     */
     public static void logout() {
         UserManager.currentUser = null;
     }

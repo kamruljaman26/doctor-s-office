@@ -123,7 +123,11 @@ public class PatientManager {
         }
     }
 
-    //
+    /**
+     * Saves patient information to a text file.
+     * @param patient The patient object containing information to be saved
+     * @return True if the patient information was successfully saved, false otherwise
+     */
     private boolean savePatient(Patient patient) {
         Path path = Paths.get(DIRECTORY);
         try {
@@ -154,6 +158,11 @@ public class PatientManager {
         }
     }
 
+    /**
+     * Deletes the patient information file associated with the given patient ID.
+     * @param patientID The ID of the patient whose information file should be deleted
+     * @return True if the patient information file was successfully deleted, false otherwise
+     */
     private boolean deletePatientFile(String patientID) {
         Path filePath = Paths.get(DIRECTORY, patientID + "_PatientInfo.txt");
         try {

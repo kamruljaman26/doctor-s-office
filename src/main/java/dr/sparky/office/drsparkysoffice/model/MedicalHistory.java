@@ -3,6 +3,9 @@ package dr.sparky.office.drsparkysoffice.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * Represents the medical history of a patient.
+ */
 public class MedicalHistory implements Serializable {
 
     private int patientId;
@@ -14,19 +17,35 @@ public class MedicalHistory implements Serializable {
     private Vitals vitals;
     private boolean isVisitCompleted;
 
+    /**
+     * Constructor to create a new medical history entry for a patient.
+     * @param patientId The ID of the patient
+     * @param vitals The vital signs recorded during the visit
+     */
     public MedicalHistory(int patientId, Vitals vitals) {
         this.patientId = patientId;
         this.vitals = vitals;
-        date = LocalDateTime.now(); // init current date
+        this.date = LocalDateTime.now(); // Initialize with current date
     }
 
+    /**
+     * Checks if the visit is completed.
+     * @return True if the visit is completed, false otherwise
+     */
     public boolean isVisitCompleted() {
         return isVisitCompleted;
     }
 
+    /**
+     * Sets whether the visit is completed.
+     * @param visitCompleted True if the visit is completed, false otherwise
+     */
     public void setVisitCompleted(boolean visitCompleted) {
         isVisitCompleted = visitCompleted;
     }
+
+    // Getters and setters for other fields...
+
 
     public int getPatientId() {
         return patientId;
@@ -34,6 +53,14 @@ public class MedicalHistory implements Serializable {
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public String getAllergies() {
@@ -76,17 +103,9 @@ public class MedicalHistory implements Serializable {
         this.vitals = vitals;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
     @Override
     public String toString() {
-        return "History{" +
+        return "MedicalHistory{" +
                 "date=" + date +
                 ", allergies='" + allergies + '\'' +
                 ", medication='" + medication + '\'' +

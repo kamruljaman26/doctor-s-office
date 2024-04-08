@@ -3,6 +3,9 @@ package dr.sparky.office.drsparkysoffice.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Represents a patient in the system.
+ */
 public class Patient implements Serializable {
 
     private String patientID;
@@ -17,6 +20,19 @@ public class Patient implements Serializable {
     private String emergencyContactPhoneNumber;
     private String medicalHistory;
 
+    /**
+     * Constructor for creating a patient without medical history.
+     * @param patientID The ID of the patient
+     * @param email The email of the patient
+     * @param firstName The first name of the patient
+     * @param lastName The last name of the patient
+     * @param dateOfBirth The date of birth of the patient
+     * @param phoneNumber The phone number of the patient
+     * @param insuranceProvider The insurance provider of the patient
+     * @param emergencyContactFirstName The first name of the emergency contact person
+     * @param emergencyContactLastName The last name of the emergency contact person
+     * @param emergencyContactPhoneNumber The phone number of the emergency contact person
+     */
     public Patient(String patientID, String email, String firstName, String lastName,
                    String dateOfBirth, String phoneNumber, String insuranceProvider,
                    String emergencyContactFirstName, String emergencyContactLastName,
@@ -33,7 +49,20 @@ public class Patient implements Serializable {
         this.emergencyContactPhoneNumber = emergencyContactPhoneNumber;
     }
 
-    // Constructor
+    /**
+     * Constructor for creating a patient with medical history.
+     * @param patientID The ID of the patient
+     * @param email The email of the patient
+     * @param firstName The first name of the patient
+     * @param lastName The last name of the patient
+     * @param dateOfBirth The date of birth of the patient
+     * @param phoneNumber The phone number of the patient
+     * @param insuranceProvider The insurance provider of the patient
+     * @param emergencyContactFirstName The first name of the emergency contact person
+     * @param emergencyContactLastName The last name of the emergency contact person
+     * @param emergencyContactPhoneNumber The phone number of the emergency contact person
+     * @param medicalHistory The medical history of the patient
+     */
     public Patient(String patientID, String email, String firstName, String lastName,
                    String dateOfBirth, String phoneNumber, String insuranceProvider,
                    String emergencyContactFirstName, String emergencyContactLastName,
@@ -51,7 +80,19 @@ public class Patient implements Serializable {
         this.medicalHistory = medicalHistory;
     }
 
-    // Method to update profile
+    /**
+     * Updates the profile of the patient.
+     * @param email The email of the patient
+     * @param firstName The first name of the patient
+     * @param lastName The last name of the patient
+     * @param dateOfBirth The date of birth of the patient
+     * @param phoneNumber The phone number of the patient
+     * @param insuranceProvider The insurance provider of the patient
+     * @param emergencyContactFirstName The first name of the emergency contact person
+     * @param emergencyContactLastName The last name of the emergency contact person
+     * @param emergencyContactPhoneNumber The phone number of the emergency contact person
+     * @param medicalHistory The medical history of the patient
+     */
     public void updateProfile(String email, String firstName, String lastName,
                               String dateOfBirth, String phoneNumber, String insuranceProvider,
                               String emergencyContactFirstName, String emergencyContactLastName,
@@ -156,12 +197,14 @@ public class Patient implements Serializable {
         this.medicalHistory = medicalHistory;
     }
 
+    // Getters and setters...
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return patientID == patient.patientID;
+        return patientID.equals(patient.patientID);
     }
 
     @Override
@@ -171,23 +214,18 @@ public class Patient implements Serializable {
 
     @Override
     public String toString() {
-        return String.format(
-                "Patient ID: %s%n" +
-                        "Email: %s%n" +
-                        "First Name: %s%n" +
-                        "Last Name: %s%n" +
-                        "Date of Birth: %s%n" +
-                        "Phone Number: %s%n" +
-                        "Insurance Provider: %s%n" +
-                        "Emergency Contact First Name: %s%n" +
-                        "Emergency Contact Last Name: %s%n" +
-                        "Emergency Contact Phone Number: %s%n" +
-                        "Medical History: %s%n",
-                getPatientID(), getEmail(), getFirstName(), getLastName(),
-                getDateOfBirth(), getPhoneNumber(), getInsuranceProvider(),
-                getEmergencyContactFirstName(), getEmergencyContactLastName(),
-                getEmergencyContactPhoneNumber(), getMedicalHistory()
-        );
+        return "Patient{" +
+                "patientID='" + patientID + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", insuranceProvider='" + insuranceProvider + '\'' +
+                ", emergencyContactFirstName='" + emergencyContactFirstName + '\'' +
+                ", emergencyContactLastName='" + emergencyContactLastName + '\'' +
+                ", emergencyContactPhoneNumber='" + emergencyContactPhoneNumber + '\'' +
+                ", medicalHistory='" + medicalHistory + '\'' +
+                '}';
     }
-
 }
