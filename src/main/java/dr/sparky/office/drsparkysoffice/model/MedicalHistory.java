@@ -8,10 +8,9 @@ import java.time.LocalDateTime;
  */
 public class MedicalHistory implements Serializable {
 
-    private int patientId;
+    private String patientId;
     private LocalDateTime date;
     private String allergies;
-    private String medication;
     private String pharmacy;
     private String prescription;
     private Vitals vitals;
@@ -22,7 +21,7 @@ public class MedicalHistory implements Serializable {
      * @param patientId The ID of the patient
      * @param vitals The vital signs recorded during the visit
      */
-    public MedicalHistory(int patientId, Vitals vitals) {
+    public MedicalHistory(String patientId, Vitals vitals) {
         this.patientId = patientId;
         this.vitals = vitals;
         this.date = LocalDateTime.now(); // Initialize with current date
@@ -44,14 +43,11 @@ public class MedicalHistory implements Serializable {
         isVisitCompleted = visitCompleted;
     }
 
-    // Getters and setters for other fields...
-
-
-    public int getPatientId() {
+    public String getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(String patientId) {
         this.patientId = patientId;
     }
 
@@ -71,13 +67,6 @@ public class MedicalHistory implements Serializable {
         this.allergies = allergies;
     }
 
-    public String getMedication() {
-        return medication;
-    }
-
-    public void setMedication(String medication) {
-        this.medication = medication;
-    }
 
     public String getPharmacy() {
         return pharmacy;
@@ -108,7 +97,6 @@ public class MedicalHistory implements Serializable {
         return "MedicalHistory{" +
                 "date=" + date +
                 ", allergies='" + allergies + '\'' +
-                ", medication='" + medication + '\'' +
                 ", pharmacy='" + pharmacy + '\'' +
                 ", prescription='" + prescription + '\'' +
                 ", vitals=" + vitals +

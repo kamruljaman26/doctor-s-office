@@ -3,10 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="rootPane" prefHeight="642.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.PatientPanelController">
@@ -20,49 +20,34 @@
          <Font name="Arial Bold" size="16.0" />
       </font>
    </Label>
-   <ImageView fx:id="menuImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="backImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@images/menu.png" />
+         <Image url="@images/back-arrow.png" />
       </image>
    </ImageView>
-   <Label layoutX="41.0" layoutY="565.0" prefWidth="120.0" text="CVS Pharmacy 44st E" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
    <Label layoutX="24.0" layoutY="538.0" text="Current Pharmacy">
       <font>
          <Font name="Arial Bold" size="16.0" />
       </font>
    </Label>
-   <Label layoutX="42.0" layoutY="585.0" text="Thomas Rd.85391" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="242.0" layoutY="577.0" text="Edit" textFill="#545454">
-      <font>
-         <Font name="Arial" size="14.0" />
-      </font>
-   </Label>
-   <Button layoutX="223.0" layoutY="118.0" mnemonicParsing="false" style="-fx-background-color: RED;" text="Add Vitals" textFill="WHITE" />
-   <Button layoutX="188.0" layoutY="84.0" mnemonicParsing="false" style="-fx-background-color: RED;" text="Add Prescription" textFill="WHITE" />
-   <Label layoutX="34.0" layoutY="88.0" text="Full Name:" textFill="#656565">
+   <Button fx:id="addVitalBtn" layoutX="468.0" layoutY="110.0" mnemonicParsing="false" onAction="#addVitalsButtonAction" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: RED;" text="Add Vitals" textFill="WHITE" />
+   <Button fx:id="addPrescriptionBtn" layoutX="468.0" layoutY="76.0" mnemonicParsing="false" onAction="#addPrescriptionButtonAction" style="-fx-background-color: RED;" text="Add Prescription" textFill="WHITE" />
+   <Label fx:id="nameLblId" layoutX="34.0" layoutY="88.0" text="Full Name: Jhon Due" textFill="#656565">
       <font>
          <Font size="14.0" />
       </font>
    </Label>
-   <Label layoutX="34.0" layoutY="147.0" text="Email: kamrul.jaman24@hmai.com" textFill="#656565">
+   <Label fx:id="emailLblId" layoutX="34.0" layoutY="147.0" text="Email: jhon.due1234@gmail.com" textFill="#656565">
       <font>
          <Font size="14.0" />
       </font>
    </Label>
-   <Label layoutX="34.0" layoutY="106.0" text="Age:" textFill="#656565">
+   <Label fx:id="ageLblId" layoutX="34.0" layoutY="106.0" text="Age: 28" textFill="#656565">
       <font>
          <Font size="14.0" />
       </font>
    </Label>
-   <Label layoutX="34.0" layoutY="126.0" text="Phone:" textFill="#656565">
+   <Label fx:id="phoneLblId" layoutX="34.0" layoutY="126.0" text="Phone: +23456789" textFill="#656565">
       <font>
          <Font size="14.0" />
       </font>
@@ -72,6 +57,6 @@
          <Font name="Arial Bold" size="16.0" />
       </font>
    </Label>
-   <TableView layoutX="23.0" layoutY="205.0" prefHeight="327.0" prefWidth="267.0" />
-   <Line endX="-5.5" endY="-46.0" layoutX="162.0" layoutY="136.0" startX="-5.5" startY="4.0" />
+   <TableView fx:id="historyTableId" layoutX="23.0" layoutY="205.0" prefHeight="327.0" prefWidth="554.0" />
+   <TextArea fx:id="currentPharmacyTxtId" layoutX="24.0" layoutY="567.0" prefHeight="44.0" prefWidth="554.0" />
 </Pane>

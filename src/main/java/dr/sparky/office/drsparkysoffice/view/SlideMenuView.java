@@ -23,7 +23,6 @@ public class SlideMenuView extends VBox {
 
     // Buttons for different menu options
     private Button patientsMessageBtn;
-    private Button patientsDetailsBtn;
     private Button closeMenuBtn;
     private Button logoutBtn;
 
@@ -47,20 +46,17 @@ public class SlideMenuView extends VBox {
 
         // Initialize menu buttons
         patientsMessageBtn = new Button("Messages");
-        patientsDetailsBtn = new Button("Details");
         logoutBtn = new Button("Logout");
         closeMenuBtn = new Button("Close");
 
         // Apply styles to buttons
         String buttonStyle = "-fx-border-color: white; -fx-border-width: 1; -fx-text-fill: white; -fx-background-color: transparent;";
         patientsMessageBtn.setStyle(buttonStyle);
-        patientsDetailsBtn.setStyle(buttonStyle);
         closeMenuBtn.setStyle(buttonStyle);
         logoutBtn.setStyle(buttonStyle);
 
         // Set buttons to expand to the maximum available width
         patientsMessageBtn.setMaxWidth(Double.MAX_VALUE);
-        patientsDetailsBtn.setMaxWidth(Double.MAX_VALUE);
         closeMenuBtn.setMaxWidth(Double.MAX_VALUE);
         logoutBtn.setMaxWidth(Double.MAX_VALUE);
 
@@ -68,7 +64,7 @@ public class SlideMenuView extends VBox {
         if (UserManager.getCurrentUser() != null && UserManager.getCurrentUser().getType().equals(UserType.PATIENT)) {
             getChildren().addAll(title, patientsMessageBtn, logoutBtn, closeMenuBtn);
         } else {
-            getChildren().addAll(title, patientsMessageBtn, patientsDetailsBtn, logoutBtn, closeMenuBtn);
+            getChildren().addAll(title, patientsMessageBtn, logoutBtn, closeMenuBtn);
         }
 
         // Event handler for the close menu button
@@ -83,16 +79,6 @@ public class SlideMenuView extends VBox {
                     e,
                     FXUtil.PATIENT_MESSAGE_PAGE,
                     "Patients Messages"
-            );
-        });
-
-        // Event handler for navigating to the patient details view
-        patientsDetailsBtn.setOnAction(e -> {
-            ((Node) e.getSource()).getScene().getWindow().hide(); // Hide the current window
-            FXUtil.loadView(
-                    e,
-                    FXUtil.ALL_PATIENT_DETAILS_PAGE,
-                    "View All Patients"
             );
         });
 

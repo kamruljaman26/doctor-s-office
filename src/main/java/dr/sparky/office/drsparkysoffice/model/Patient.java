@@ -1,6 +1,9 @@
 package dr.sparky.office.drsparkysoffice.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
@@ -196,8 +199,6 @@ public class Patient implements Serializable {
     public void setMedicalHistory(String medicalHistory) {
         this.medicalHistory = medicalHistory;
     }
-
-    // Getters and setters...
 
     @Override
     public boolean equals(Object o) {

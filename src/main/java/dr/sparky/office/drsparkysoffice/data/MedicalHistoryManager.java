@@ -16,7 +16,7 @@ public class MedicalHistoryManager {
     private static final String MEDICAL_HISTORY_FILE = "database/medicalHistory.bin";
 
     // Map to store medical histories with patient IDs as keys
-    private Map<Integer, List<MedicalHistory>> medicalHistories;
+    private Map<String, List<MedicalHistory>> medicalHistories;
 
     /**
      * Constructs a MedicalHistoryManager object and loads medical histories from the file.
@@ -31,7 +31,7 @@ public class MedicalHistoryManager {
      */
     private void loadMedicalHistories() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(MEDICAL_HISTORY_FILE))) {
-            medicalHistories = (Map<Integer, List<MedicalHistory>>) ois.readObject();
+            medicalHistories = (Map<String, List<MedicalHistory>>) ois.readObject();
         } catch (FileNotFoundException e) {
             medicalHistories = new HashMap<>();
         } catch (IOException | ClassNotFoundException e) {
@@ -55,7 +55,7 @@ public class MedicalHistoryManager {
      * @param patientId The ID of the patient
      * @param history The medical history to be added
      */
-    public void addMedicalHistory(int patientId, MedicalHistory history) {
+    public void addMedicalHistory(String patientId, MedicalHistory history) {
         List<MedicalHistory> patientHistories = medicalHistories.getOrDefault(patientId, new ArrayList<>());
         patientHistories.add(history);
         medicalHistories.put(patientId, patientHistories);
@@ -67,7 +67,7 @@ public class MedicalHistoryManager {
      * @param patientId The ID of the patient
      * @return The list of medical histories for the specified patient
      */
-    public List<MedicalHistory> getMedicalHistories(int patientId) {
+    public List<MedicalHistory> getMedicalHistories(String patientId) {
         return medicalHistories.getOrDefault(patientId, new ArrayList<>());
     }
 
@@ -77,13 +77,13 @@ public class MedicalHistoryManager {
      * @param updatedHistory The updated medical history
      * @return True if the medical history was successfully updated, false otherwise
      */
-    public boolean updateMedicalHistory(int patientId, MedicalHistory updatedHistory) {
+    public boolean updateMedicalHistory(String patientId, MedicalHistory updatedHistory) {
         if (!medicalHistories.containsKey(patientId)) {
             return false; // No medical histories for this patient
         }
 
         List<MedicalHistory> patientHistories = medicalHistories.get(patientId);
-        patientHistories.replaceAll(h -> h.getPatientId() == updatedHistory.getPatientId() ? updatedHistory : h);
+        patientHistories.replaceAll(h -> h.getPatientId().equals(updatedHistory.getPatientId()) ? updatedHistory : h);
         saveMedicalHistories();
         return true;
     }
@@ -94,13 +94,13 @@ public class MedicalHistoryManager {
      * @param historyId The ID of the medical history to be deleted
      * @return True if the medical history was successfully deleted, false otherwise
      */
-    public boolean deleteMedicalHistory(int patientId, int historyId) {
+    public boolean deleteMedicalHistory(String patientId, String historyId) {
         if (!medicalHistories.containsKey(patientId)) {
             return false; // No medical histories for this patient
         }
 
         List<MedicalHistory> patientHistories = medicalHistories.get(patientId);
-        patientHistories.removeIf(h -> h.getPatientId() == historyId);
+        patientHistories.removeIf(h -> h.getPatientId().equals(historyId));
         if (patientHistories.isEmpty()) {
             medicalHistories.remove(patientId);
         }

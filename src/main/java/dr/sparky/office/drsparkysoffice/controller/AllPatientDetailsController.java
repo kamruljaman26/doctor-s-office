@@ -101,11 +101,11 @@ public class AllPatientDetailsController implements Initializable {
             @Override
             public TableCell<Patient, Void> call(final TableColumn<Patient, Void> param) {
                 final TableCell<Patient, Void> cell = new TableCell<>() {
-                    private final Button btn = new Button("View");
+                    private final Button btn = new Button("Manage");
                     {
                         btn.setOnAction(event -> {
                             Patient patient = getTableView().getItems().get(getIndex());
-                            FXUtil.loadView(event, FXUtil.PATIENT_PANEL_PAGE, "Add New Patient", patient);
+                            FXUtil.loadView(event, FXUtil.PATIENT_PANEL_PAGE, "Patient Details View", patient);
                         });
                     }
 
@@ -124,7 +124,7 @@ public class AllPatientDetailsController implements Initializable {
         };
 
         // Add a new column with the custom cell factory
-        TableColumn<Patient, Void> viewButtonColumn = new TableColumn<>("View Details");
+        TableColumn<Patient, Void> viewButtonColumn = new TableColumn<>("Manage");
         viewButtonColumn.setCellFactory(cellFactory);
 
         tableViewId.getColumns().add(viewButtonColumn);
