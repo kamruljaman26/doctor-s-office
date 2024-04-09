@@ -67,9 +67,8 @@ public class LoginController implements Initializable, DataTraveler {
                 // Load the home page
                 FXUtil.loadView(
                         actionEvent,
-                        FXUtil.COMMON_DASH_PAGE,
-                        "Doctor Dashboard",
-                        userAccount
+                        FXUtil.ALL_PATIENT_DETAILS_PAGE,
+                        "Doctor Dashboard"
                 );
             } else if (type.equals(UserType.NURSE)) {
                 // Hide the current window
@@ -77,9 +76,8 @@ public class LoginController implements Initializable, DataTraveler {
                 // Load the home page
                 FXUtil.loadView(
                         actionEvent,
-                        FXUtil.COMMON_DASH_PAGE,
-                        "Nurse Dashboard",
-                        userAccount
+                        FXUtil.ALL_PATIENT_DETAILS_PAGE,
+                        "Nurse Dashboard"
                 );
             }
         }

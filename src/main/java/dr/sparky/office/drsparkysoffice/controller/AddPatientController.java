@@ -5,7 +5,6 @@ import dr.sparky.office.drsparkysoffice.data.UserManager;
 import dr.sparky.office.drsparkysoffice.model.Patient;
 import dr.sparky.office.drsparkysoffice.model.UserAccount;
 import dr.sparky.office.drsparkysoffice.model.UserType;
-import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -22,7 +21,7 @@ import java.util.regex.Pattern;
  * Controller for the registration page of the application.
  * This controller handles user interactions on the registration view.
  */
-public class AddPatientController implements Initializable, DataTraveler {
+public class AddPatientController implements Initializable {
 
     public TextField emailTxtFldId;
     public TextField passwordTxtFldId;
@@ -46,13 +45,8 @@ public class AddPatientController implements Initializable, DataTraveler {
         userManager = new UserManager();
         // set back button
         imgBackBtn.setOnMouseClicked(e -> {
-            FXUtil.loadView(e, FXUtil.PATIENT_DETAILS_PAGE, "Patient Details");
+            FXUtil.loadView(e, FXUtil.ALL_PATIENT_DETAILS_PAGE, "Patient Details");
         });
-    }
-
-    @Override
-    public void data(Object... o) {
-        // Implement data transfer functionality if needed
     }
 
     // Submit registration and move to the home page
@@ -75,7 +69,7 @@ public class AddPatientController implements Initializable, DataTraveler {
 
             if (patientSaved && userSaved) {
                 // Proceed to load the home page
-                FXUtil.loadView(actionEvent, FXUtil.PATIENT_DETAILS_PAGE, "Patient Details");
+                FXUtil.loadView(actionEvent, FXUtil.ALL_PATIENT_DETAILS_PAGE, "Patient Details");
             } else {
                 throw new Exception("There was an error saving the patient or user account.");
             }
@@ -161,7 +155,6 @@ public class AddPatientController implements Initializable, DataTraveler {
         }
         return format;
     }
-
 
     private UserAccount createUserAccount(Patient patient) {
         // Assuming UserAccount has a constructor or setters for all the fields

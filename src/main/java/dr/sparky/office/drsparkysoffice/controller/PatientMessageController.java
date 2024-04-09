@@ -50,7 +50,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
                 ((Node) e.getSource()).getScene().getWindow().hide();
                 FXUtil.loadView(
                         e,
-                        FXUtil.COMMON_DASH_PAGE,
+                        FXUtil.ALL_PATIENT_DETAILS_PAGE,
                         UserManager.getCurrentUser().getType() + " App"
                 );
             }
@@ -61,7 +61,7 @@ public class PatientMessageController implements Initializable, DataTraveler {
             ((Node) e.getSource()).getScene().getWindow().hide();
             FXUtil.loadView(
                     e,
-                    FXUtil.PATIENT_DETAILS_PAGE,
+                    FXUtil.ALL_PATIENT_DETAILS_PAGE,
                     "All Patients"
             );
         });

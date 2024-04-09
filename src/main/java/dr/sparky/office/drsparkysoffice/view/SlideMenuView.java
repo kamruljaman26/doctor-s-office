@@ -91,7 +91,7 @@ public class SlideMenuView extends VBox {
             ((Node) e.getSource()).getScene().getWindow().hide(); // Hide the current window
             FXUtil.loadView(
                     e,
-                    FXUtil.PATIENT_DETAILS_PAGE,
+                    FXUtil.ALL_PATIENT_DETAILS_PAGE,
                     "View All Patients"
             );
         });

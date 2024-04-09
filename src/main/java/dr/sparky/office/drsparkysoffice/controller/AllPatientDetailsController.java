@@ -7,6 +7,7 @@ import dr.sparky.office.drsparkysoffice.model.UserAccount;
 import dr.sparky.office.drsparkysoffice.model.UserType;
 import dr.sparky.office.drsparkysoffice.util.DataTraveler;
 import dr.sparky.office.drsparkysoffice.util.FXUtil;
+import dr.sparky.office.drsparkysoffice.view.SlideMenuView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -14,6 +15,9 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.util.Callback;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,40 +27,27 @@ import java.util.stream.Collectors;
  * Controller for the patient details page of the application.
  * This controller handles user interactions on the patient details view.
  */
-public class PatientDetailsController implements Initializable, DataTraveler {
+public class AllPatientDetailsController implements Initializable {
 
     public ImageView backImageViewId;
     public Button searchBtnId;
     public TextField searchTxtFldId;
     public TableView<Patient> tableViewId;
     public ImageView addImageViewId;
+    public Pane rootPane;
     private PatientManager patientManager;
     private ObservableList<Patient> observablePatients;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         patientManager = new PatientManager();
-        observablePatients = FXCollections.observableArrayList(patientManager.getAllPatients());
-        tableViewId.setItems(observablePatients);
+
+        // Initialize Patient data tables
+        initTableView();
 
         // Initialize back button
         backImageViewId.setOnMouseClicked(e -> {
-            UserAccount currentUser = UserManager.getCurrentUser();
-            if (currentUser.getType().equals(UserType.PATIENT)) {
-                ((Node) e.getSource()).getScene().getWindow().hide();
-                FXUtil.loadView(
-                        e,
-                        FXUtil.PATIENT_DASH_PAGE,
-                        "Patient Dash"
-                );
-            } else {
-                ((Node) e.getSource()).getScene().getWindow().hide();
-                FXUtil.loadView(
-                        e,
-                        FXUtil.COMMON_DASH_PAGE,
-                        UserManager.getCurrentUser().getType() + " App"
-                );
-            }
+            new SlideMenuView(rootPane).open();
         });
 
         // Initialize search button
@@ -64,9 +55,26 @@ public class PatientDetailsController implements Initializable, DataTraveler {
 
         // Initialize add patient button
         addImageViewId.setOnMouseClicked(e -> {
-            // Navigate to the add patient page
              FXUtil.loadView(e, FXUtil.PATIENT_ADD_PAGE, "Add New Patient");
-//            System.out.println("addImageViewId");
+        });
+
+    }
+
+    private void initTableView() {
+        observablePatients = FXCollections.observableArrayList(patientManager.getAllPatients());
+        tableViewId.setItems(observablePatients);
+
+        // Initialize back button
+        backImageViewId.setOnMouseClicked(e -> {
+            new SlideMenuView(rootPane).open();
+        });
+
+        // Initialize search button
+        searchBtnId.setOnAction(e -> searchPatient());
+
+        // Initialize add patient button
+        addImageViewId.setOnMouseClicked(e -> {
+            FXUtil.loadView(e, FXUtil.PATIENT_ADD_PAGE, "Add New Patient");
         });
 
         // Set up table columns
@@ -79,9 +87,49 @@ public class PatientDetailsController implements Initializable, DataTraveler {
         TableColumn<Patient, String> lastNameColumn = new TableColumn<>("Last Name");
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
+        TableColumn<Patient, String> dateOfBirthColumn = new TableColumn<>("Date Of Birth");
+        dateOfBirthColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+
+        TableColumn<Patient, String> phoneNumberColumn = new TableColumn<>("Phone Number");
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+
         // Add columns to table
-        tableViewId.getColumns().addAll(patientIDColumn, firstNameColumn, lastNameColumn);
+        tableViewId.getColumns().addAll(patientIDColumn, firstNameColumn, lastNameColumn, dateOfBirthColumn,phoneNumberColumn);
+
+        // Create a custom cell factory for the view button
+        Callback<TableColumn<Patient, Void>, TableCell<Patient, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Patient, Void> call(final TableColumn<Patient, Void> param) {
+                final TableCell<Patient, Void> cell = new TableCell<>() {
+                    private final Button btn = new Button("View");
+                    {
+                        btn.setOnAction(event -> {
+                            Patient patient = getTableView().getItems().get(getIndex());
+                            FXUtil.loadView(event, FXUtil.PATIENT_PANEL_PAGE, "Add New Patient", patient);
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        // Add a new column with the custom cell factory
+        TableColumn<Patient, Void> viewButtonColumn = new TableColumn<>("View Details");
+        viewButtonColumn.setCellFactory(cellFactory);
+
+        tableViewId.getColumns().add(viewButtonColumn);
     }
+
 
     // Search for patients based on the search text
     private void searchPatient() {
@@ -90,15 +138,11 @@ public class PatientDetailsController implements Initializable, DataTraveler {
                 .filter(patient -> patient.getFirstName().toLowerCase().contains(searchText)
                         || patient.getLastName().toLowerCase().contains(searchText)
                         || patient.getEmail().toLowerCase().contains(searchText)
+                        || patient.getPatientID().toLowerCase().contains(searchText)
                         || patient.getPhoneNumber().contains(searchText)
                         || patient.getDateOfBirth().contains(searchText))
                 .collect(Collectors.toList());
         observablePatients.clear();
         observablePatients.addAll(filteredPatients);
-    }
-
-    @Override
-    public void data(Object... o) {
-        // This method can be used to receive data from other views if needed
     }
 }

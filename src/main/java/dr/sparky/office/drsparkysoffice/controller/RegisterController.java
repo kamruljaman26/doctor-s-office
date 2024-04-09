@@ -164,4 +164,12 @@ public class RegisterController implements Initializable, DataTraveler {
                 patient
         );
     }
+
+    public void backButtonAction(ActionEvent actionEvent) {
+        FXUtil.loadView(
+                actionEvent,
+                FXUtil.START_VIEW,
+                UserManager.getCurrentUser().getType() + " App"
+        );
+    }
 }

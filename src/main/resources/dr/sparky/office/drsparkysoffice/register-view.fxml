@@ -11,28 +11,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.RegisterController">
-   <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="134.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane prefHeight="640.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.RegisterController">
+   <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="265.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/logo.png" />
       </image>
    </ImageView>
-   <Label layoutX="104.0" layoutY="102.0" text="Dr Sparky's Office" textFill="#616161">
+   <Label layoutX="235.0" layoutY="102.0" text="Dr Sparky's Office" textFill="#616161">
       <font>
          <Font name="Arial Bold" size="13.0" />
       </font>
    </Label>
-   <Label layoutX="37.0" layoutY="157.0" text="Create Account">
+   <Label layoutX="206.0" layoutY="157.0" text="Create Account">
       <font>
          <Font name="Arial Bold" size="22.0" />
       </font>
    </Label>
-   <Label layoutX="37.0" layoutY="189.0" text="Please provide the following informations." textFill="#545454">
+   <Label layoutX="180.0" layoutY="189.0" text="Please provide the following informations." textFill="#545454">
       <font>
          <Font name="Arial" size="12.0" />
       </font>
    </Label>
-   <ScrollPane layoutX="26.0" layoutY="214.0" prefHeight="377.0" prefWidth="266.0">
+   <ScrollPane layoutX="161.0" layoutY="215.0" prefHeight="377.0" prefWidth="265.0">
       <content>
          <VBox prefHeight="345.0" prefWidth="245.0">
             <children>
@@ -44,7 +44,7 @@
                      <Insets bottom="3.0" top="5.0" />
                   </VBox.margin>
                </Label>
-               <TextField fx:id="emailTxtFldId" maxHeight="30.0" maxWidth="225.0" minHeight="30.0" minWidth="225.0" prefHeight="30.0" prefWidth="225.0" promptText="Enter email" />
+               <TextField fx:id="emailTxtFldId" maxHeight="30.0" maxWidth="264.0" minHeight="30.0" minWidth="225.0" prefHeight="30.0" prefWidth="264.0" promptText="Enter email" />
                <Label text="Password" textFill="RED">
                   <font>
                      <Font name="Arial Bold" size="11.0" />
@@ -111,5 +111,6 @@
          </VBox>
       </content>
    </ScrollPane>
-   <Label fx:id="errMsgLabelId" alignment="CENTER" layoutX="17.0" layoutY="609.0" prefHeight="17.0" prefWidth="288.0" textAlignment="CENTER" textFill="#f27c7c" />
+   <Label fx:id="errMsgLabelId" alignment="CENTER" layoutX="17.0" layoutY="609.0" prefHeight="17.0" prefWidth="567.0" textAlignment="CENTER" textFill="#f27c7c" />
+   <Button layoutX="522.0" layoutY="597.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="26.0" prefWidth="56.0" style="-fx-background-color: red;" text="Back" textFill="WHITE" />
 </AnchorPane>

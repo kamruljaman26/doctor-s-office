@@ -18,10 +18,9 @@ public class FXUtil {
     public static final String REGISTER_PAGE = "register-view.fxml";
     public static final String PATIENT_ADD_PAGE = "add-patient-view.fxml";
     public static final String PATIENT_MESSAGE_PAGE = "patient-message-view.fxml";
-    public static final String PATIENT_DETAILS_PAGE = "patient-details-view.fxml";
+    public static final String ALL_PATIENT_DETAILS_PAGE = "all-patient-details-view.fxml";
+    public static final String PATIENT_PANEL_PAGE = "patient-panel-view.fxml";
     public static final String PATIENT_DASH_PAGE = "patient-dash-view.fxml";
-    public static final String DOCTOR_DASH_PAGE = "doctor-dash-view.fxml";
-    public static final String COMMON_DASH_PAGE = "common-dash-view.fxml";
 
 
     /**

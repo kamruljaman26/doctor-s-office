@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="rootPane" prefHeight="642.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.PatientDetailsController">
-   <Label layoutX="96.0" layoutY="23.0" text="Manage Patients">
+<Pane fx:id="rootPane" prefHeight="642.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.sparky.office.drsparkysoffice.controller.AllPatientDetailsController">
+   <Label layoutX="48.0" layoutY="23.0" text="Manage Patients">
       <font>
          <Font name="Arial Bold" size="16.0" />
       </font>
@@ -22,15 +22,15 @@
    </Label>
    <ImageView fx:id="backImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@images/back-arrow.png" />
+         <Image url="@images/menu.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="addImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="282.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="addImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="560.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/add.png" />
       </image>
    </ImageView>
-   <Button fx:id="searchBtnId" layoutX="226.0" layoutY="57.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Search" />
-   <TextField fx:id="searchTxtFldId" layoutX="24.0" layoutY="57.0" prefHeight="26.0" prefWidth="193.0" promptText="Enter name" />
-   <TableView fx:id="tableViewId" layoutX="24.0" layoutY="128.0" prefHeight="491.0" prefWidth="273.0" />
+   <Button fx:id="searchBtnId" layoutX="506.0" layoutY="57.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Search" />
+   <TextField fx:id="searchTxtFldId" layoutX="24.0" layoutY="57.0" prefHeight="26.0" prefWidth="473.0" promptText="Enter name" />
+   <TableView fx:id="tableViewId" layoutX="24.0" layoutY="128.0" prefHeight="491.0" prefWidth="554.0" />
 </Pane>
