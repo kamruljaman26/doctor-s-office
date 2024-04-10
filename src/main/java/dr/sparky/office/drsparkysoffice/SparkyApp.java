@@ -25,8 +25,10 @@ public class SparkyApp extends Application {
         UserManager manager = new UserManager();
         manager.addUser(new UserAccount("nurse1@g.com","nurse1", UserType.NURSE));
         manager.addUser(new UserAccount("nurse2@g.com","nurse2", UserType.NURSE));
+        manager.addUser(new UserAccount("n@n.n","n", UserType.NURSE));
         manager.addUser(new UserAccount("doctor1@g.com","doctor1", UserType.DOCTOR));
         manager.addUser(new UserAccount("doctor2@g.com","doctor2", UserType.DOCTOR));
+        manager.addUser(new UserAccount("d@d.d","d", UserType.DOCTOR));
     }
 
     public static void main(String[] args) {

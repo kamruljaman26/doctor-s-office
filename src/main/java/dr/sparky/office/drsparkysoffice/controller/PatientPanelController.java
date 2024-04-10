@@ -228,7 +228,7 @@ public class PatientPanelController implements Initializable, DataTraveler {
                 medicalHistory.setPrescription(prescriptionField.getText());
                 medicalHistory.setVisitCompleted(true);
 
-                historyManager.updateMedicalHistory(patient.getPatientID(), medicalHistory);
+                historyManager.updateMedicalHistory(patient.getPatientID(), medicalHistory.getHistoryId(), medicalHistory);
 
                 initializeHistoryTable();
                 currentPharmacyTxtId.setText(medicalHistory.getPharmacy());

@@ -3,6 +3,7 @@ package dr.sparky.office.drsparkysoffice.test;
 import dr.sparky.office.drsparkysoffice.data.MedicalHistoryManager;
 import dr.sparky.office.drsparkysoffice.model.MedicalHistory;
 import dr.sparky.office.drsparkysoffice.model.Vitals;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class MedicalHistoryManagerTest {
             MedicalHistory historyToUpdate = retrievedHistories.get(0);
             Vitals updatedVitals = new Vitals(72, 175, 37.0, "130/85");
             historyToUpdate.setVitals(updatedVitals);
-            boolean updated = historyManager.updateMedicalHistory("1", historyToUpdate);
+            boolean updated = historyManager.updateMedicalHistory("1", historyToUpdate.getHistoryId(), historyToUpdate);
             System.out.println("Medical history updated: " + updated);
         }
 

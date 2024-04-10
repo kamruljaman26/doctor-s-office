@@ -2,6 +2,7 @@ package dr.sparky.office.drsparkysoffice.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Random;
 
 /**
  * Represents the medical history of a patient.
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 public class MedicalHistory implements Serializable {
 
     private String patientId;
+    private int historyId;
     private LocalDateTime date;
     private String allergies;
     private String pharmacy;
@@ -25,6 +27,13 @@ public class MedicalHistory implements Serializable {
         this.patientId = patientId;
         this.vitals = vitals;
         this.date = LocalDateTime.now(); // Initialize with current date
+
+        Random rand = new Random();
+        historyId = rand.nextInt(100000);
+    }
+
+    public int getHistoryId() {
+        return historyId;
     }
 
     /**

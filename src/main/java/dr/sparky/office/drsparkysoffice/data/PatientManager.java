@@ -28,7 +28,7 @@ public class PatientManager {
      */
     public Patient retrievePatient(String patientID) {
         return allPatients.stream()
-                .filter(patient -> patient.getPatientID() == patientID)
+                .filter(patient -> patient.getPatientID().equals(patientID))
                 .findFirst()
                 .orElse(null);
     }

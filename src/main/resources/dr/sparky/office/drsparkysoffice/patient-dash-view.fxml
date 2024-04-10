@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -17,14 +19,9 @@
          <Font name="Arial Bold" size="16.0" />
       </font>
    </Label>
-   <Label layoutX="37.0" layoutY="67.0" text="Welcome, Jhon">
+   <Label fx:id="titleLabel" layoutX="37.0" layoutY="67.0" text="Welcome, Jhon">
       <font>
          <Font name="Arial Bold" size="22.0" />
-      </font>
-   </Label>
-   <Label layoutX="37.0" layoutY="149.0" text="Medication1               10mg         request refill" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
       </font>
    </Label>
    <ImageView fx:id="menuImageViewId" fitHeight="16.0" fitWidth="17.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
@@ -32,64 +29,22 @@
          <Image url="@images/menu.png" />
       </image>
    </ImageView>
-   <Label layoutX="37.0" layoutY="117.0" text="Current Medications">
+   <Label layoutX="37.0" layoutY="222.0" text="Current Prescription">
       <font>
          <Font name="Arial Bold" size="22.0" />
       </font>
    </Label>
-   <Label layoutX="37.0" layoutY="169.0" text="Medication1               10mg         request refill" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="37.0" layoutY="189.0" text="Medication1               10mg         request refill" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="52.0" layoutY="259.0" text="10/24/2024                    physical" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="37.0" layoutY="227.0" text="Previous Visits">
+   <Label layoutX="37.0" layoutY="321.0" text="Previous Visits">
       <font>
          <Font name="Arial Bold" size="22.0" />
       </font>
    </Label>
-   <Label layoutX="52.0" layoutY="279.0" text="5/16/2023                    ear infection" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="51.0" layoutY="349.0" prefWidth="120.0" text="CVS Pharmacy 44st E" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="37.0" layoutY="317.0" text="Current Pharmacy">
+   <Label layoutX="36.0" layoutY="126.0" text="Current Pharmacy">
       <font>
          <Font name="Arial Bold" size="22.0" />
       </font>
    </Label>
-   <Label layoutX="52.0" layoutY="369.0" text="Thomas Rd.85391" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="252.0" layoutY="361.0" text="Edit" textFill="#545454">
-      <font>
-         <Font name="Arial" size="14.0" />
-      </font>
-   </Label>
-   <Label layoutX="56.0" layoutY="442.0" text="All messages" textFill="#545454">
-      <font>
-         <Font name="Arial" size="12.0" />
-      </font>
-   </Label>
-   <Label layoutX="37.0" layoutY="410.0" text="Inbox">
-      <font>
-         <Font name="Arial Bold" size="22.0" />
-      </font>
-   </Label>
+   <TableView fx:id="visitsTableView" layoutX="37.0" layoutY="356.0" prefHeight="258.0" prefWidth="531.0" />
+   <TextArea fx:id="prescriptionTxtArea" layoutX="37.0" layoutY="255.0" prefHeight="56.0" prefWidth="531.0" style="-fx-background-color: white; -fx-border-color: white;" />
+   <TextArea fx:id="pharmacyTxtArea" layoutX="37.0" layoutY="158.0" prefHeight="56.0" prefWidth="531.0" style="-fx-background-color: white; -fx-border-color: white;" />
 </Pane>

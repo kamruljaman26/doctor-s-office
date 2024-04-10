@@ -169,7 +169,7 @@ public class RegisterController implements Initializable, DataTraveler {
         FXUtil.loadView(
                 actionEvent,
                 FXUtil.START_VIEW,
-                UserManager.getCurrentUser().getType() + " App"
+                 "Dr Sparky's Office"
         );
     }
 }

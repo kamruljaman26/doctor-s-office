@@ -1,4 +1,5 @@
 package dr.sparky.office.drsparkysoffice.data;
+
 import dr.sparky.office.drsparkysoffice.model.MedicalHistory;
 
 import java.io.*;
@@ -52,8 +53,9 @@ public class MedicalHistoryManager {
 
     /**
      * Adds a medical history for the specified patient.
+     *
      * @param patientId The ID of the patient
-     * @param history The medical history to be added
+     * @param history   The medical history to be added
      */
     public void addMedicalHistory(String patientId, MedicalHistory history) {
         List<MedicalHistory> patientHistories = medicalHistories.getOrDefault(patientId, new ArrayList<>());
@@ -64,6 +66,7 @@ public class MedicalHistoryManager {
 
     /**
      * Retrieves the medical histories for the specified patient.
+     *
      * @param patientId The ID of the patient
      * @return The list of medical histories for the specified patient
      */
@@ -73,23 +76,30 @@ public class MedicalHistoryManager {
 
     /**
      * Updates a medical history for the specified patient.
-     * @param patientId The ID of the patient
+     *
+     * @param patientId      The ID of the patient
      * @param updatedHistory The updated medical history
      * @return True if the medical history was successfully updated, false otherwise
      */
-    public boolean updateMedicalHistory(String patientId, MedicalHistory updatedHistory) {
+    public boolean updateMedicalHistory(String patientId, int hId, MedicalHistory updatedHistory) {
         if (!medicalHistories.containsKey(patientId)) {
             return false; // No medical histories for this patient
         }
 
         List<MedicalHistory> patientHistories = medicalHistories.get(patientId);
-        patientHistories.replaceAll(h -> h.getPatientId().equals(updatedHistory.getPatientId()) ? updatedHistory : h);
+        for (int i = 0; i < patientHistories.size(); i++) {
+            if (patientHistories.get(i).getHistoryId() == hId) {
+                patientHistories.set(i, updatedHistory);
+            }
+        }
+
         saveMedicalHistories();
         return true;
     }
 
     /**
      * Deletes a medical history for the specified patient.
+     *
      * @param patientId The ID of the patient
      * @param historyId The ID of the medical history to be deleted
      * @return True if the medical history was successfully deleted, false otherwise

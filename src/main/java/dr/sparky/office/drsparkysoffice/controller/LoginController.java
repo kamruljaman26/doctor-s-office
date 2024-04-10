@@ -58,8 +58,7 @@ public class LoginController implements Initializable, DataTraveler {
                 FXUtil.loadView(
                         actionEvent,
                         FXUtil.PATIENT_DASH_PAGE,
-                        "Patient Dashboard",
-                        userAccount
+                        "Patient Dashboard"
                 );
             } else if (type.equals(UserType.DOCTOR)) {
                 // Hide the current window
