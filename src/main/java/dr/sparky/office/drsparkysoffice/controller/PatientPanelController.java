@@ -43,7 +43,6 @@ public class PatientPanelController implements Initializable, DataTraveler {
     public Label ageLblId;
     public Label phoneLblId;
     public Button addVitalBtn;
-    public Button addPrescriptionBtn;
     public TextArea currentPharmacyTxtId;
 
     private Patient patient;
@@ -81,30 +80,25 @@ public class PatientPanelController implements Initializable, DataTraveler {
             addVitalBtn.setVisible(false);
         }
 
-        // if nurse
-        if (UserManager.getCurrentUser().isNurse()) {
-            addPrescriptionBtn.setVisible(false);
-            initializeHistoryTableNurse();
-        }
-
+        initializeHistoryTable();
         updatePharmacy();
     }
 
-    public void updatePharmacy(){
+    public void updatePharmacy() {
         // init current pharmacy
         List<MedicalHistory> medicalHistories = historyManager.getMedicalHistories(patient.getPatientID());
-        if(!medicalHistories.isEmpty()){
+        if (!medicalHistories.isEmpty()) {
             MedicalHistory medicalHistory = medicalHistories.get(medicalHistories.size() - 1);
 
             String pharmacy = medicalHistory.getPharmacy();
-            if(pharmacy == null || pharmacy.isEmpty())
+            if (pharmacy == null || pharmacy.isEmpty())
                 currentPharmacyTxtId.setText("For last visit Pharmacy not assignment yet.");
             else
                 currentPharmacyTxtId.setText(pharmacy);
         }
     }
 
-    private void initializeHistoryTableNurse() {
+    private void initializeHistoryTable() {
         TableColumn<MedicalHistory, String> dateColumn = new TableColumn<>("Date");
         dateColumn.setCellValueFactory(cellData -> {
             LocalDateTime date = cellData.getValue().getDate();
@@ -136,14 +130,23 @@ public class PatientPanelController implements Initializable, DataTraveler {
                 new ReadOnlyObjectWrapper<>(cellData.getValue().getVitals() != null ?
                         cellData.getValue().getVitals().getBloodPressure() : "N/A").asString());
 
+        // Blood Pressure Column
+        TableColumn<MedicalHistory, Boolean> isDonePressureColumn = new TableColumn<>("Completed");
+        isDonePressureColumn.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().isVisitCompleted()));
+
         TableColumn<MedicalHistory, Void> viewColumn = new TableColumn<>("Actions");
         viewColumn.setCellFactory(getButtonCellFactory());
 
         historyTableId.getColumns().clear();
-        historyTableId.getColumns().addAll(dateColumn, weightColumn, heightColumn, bloodPressureColumn, viewColumn);
+        historyTableId.getColumns().addAll(dateColumn, weightColumn, heightColumn, bloodPressureColumn, isDonePressureColumn, viewColumn);
 
         observablePatients = FXCollections.observableArrayList(historyManager.getMedicalHistories(patient.getPatientID()));
-        observablePatients.sort(Comparator.comparing(MedicalHistory::getDate));
+        observablePatients.sort(new Comparator<MedicalHistory>() {
+            @Override
+            public int compare(MedicalHistory o1, MedicalHistory o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         historyTableId.setItems(observablePatients);
     }
 
@@ -179,7 +182,7 @@ public class PatientPanelController implements Initializable, DataTraveler {
                             });
 
                             prescribe.setOnAction(event -> {
-                                editMedicalHistoryDetails(medicalHistory);
+                                prescribe(medicalHistory);
                             });
 
                             setGraphic(hbox);
@@ -190,9 +193,53 @@ public class PatientPanelController implements Initializable, DataTraveler {
         };
     }
 
-    private void editMedicalHistoryDetails(MedicalHistory medicalHistory) {
+    private void prescribe(MedicalHistory medicalHistory) {
+        // Create the custom dialog.
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Prescribe Medication");
 
+        // Set the button types.
+        ButtonType prescribeButtonType = new ButtonType("Prescribe", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(prescribeButtonType, ButtonType.CANCEL);
+
+        // Create labels and text fields for input
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        TextField allergiesField = new TextField(medicalHistory.getAllergies());
+        TextField pharmacyField = new TextField(medicalHistory.getPharmacy());
+        TextField prescriptionField = new TextField(medicalHistory.getPrescription());
+
+        grid.add(new Label("Allergies:"), 0, 0);
+        grid.add(allergiesField, 1, 0);
+        grid.add(new Label("Pharmacy:"), 0, 1);
+        grid.add(pharmacyField, 1, 1);
+        grid.add(new Label("Prescription:"), 0, 2);
+        grid.add(prescriptionField, 1, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        // Process the result.
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == prescribeButtonType) {
+                medicalHistory.setAllergies(allergiesField.getText());
+                medicalHistory.setPharmacy(pharmacyField.getText());
+                medicalHistory.setPrescription(prescriptionField.getText());
+                medicalHistory.setVisitCompleted(true);
+
+                historyManager.updateMedicalHistory(patient.getPatientID(), medicalHistory);
+
+                initializeHistoryTable();
+                currentPharmacyTxtId.setText(medicalHistory.getPharmacy());
+            }
+            return null;
+        });
+
+        // Show the dialog and wait for the user response.
+        dialog.showAndWait();
     }
+
 
     private void viewMedicalHistoryDetails(MedicalHistory medicalHistory) {
         // Create the custom dialog
@@ -304,14 +351,10 @@ public class PatientPanelController implements Initializable, DataTraveler {
             historyManager.addMedicalHistory(patient.getPatientID(), medicalHistory);
 
             observablePatients.add(medicalHistory);
-            observablePatients.sort(Comparator.comparing(MedicalHistory::getDate));
+            initializeHistoryTable();
 
             System.out.println(historyManager.getMedicalHistories(patient.getPatientID()));
             System.out.println("Vitals added: " + vitals);
         });
-    }
-
-    public void addPrescriptionButtonAction(ActionEvent actionEvent) {
-
     }
 }

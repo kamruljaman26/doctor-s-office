@@ -30,8 +30,7 @@
          <Font name="Arial Bold" size="16.0" />
       </font>
    </Label>
-   <Button fx:id="addVitalBtn" layoutX="468.0" layoutY="110.0" mnemonicParsing="false" onAction="#addVitalsButtonAction" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: RED;" text="Add Vitals" textFill="WHITE" />
-   <Button fx:id="addPrescriptionBtn" layoutX="468.0" layoutY="76.0" mnemonicParsing="false" onAction="#addPrescriptionButtonAction" style="-fx-background-color: RED;" text="Add Prescription" textFill="WHITE" />
+   <Button fx:id="addVitalBtn" layoutX="468.0" layoutY="20.0" mnemonicParsing="false" onAction="#addVitalsButtonAction" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: RED;" text="Add Vitals" textFill="WHITE" />
    <Label fx:id="nameLblId" layoutX="34.0" layoutY="88.0" text="Full Name: Jhon Due" textFill="#656565">
       <font>
          <Font size="14.0" />
